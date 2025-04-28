@@ -1,18 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import Card from './Card';
-import { motion } from "framer-motion"
+import { motion } from "framer-motion";
 import { useStoreContext } from '../contextapi/ContextApi';
 
 const LandingPage = () => {
-    const {token,setToken}=useStoreContext();
+    const { token, setToken } = useStoreContext();
     const desc = "Generate short, memorable links with ease using LinkNShare";
     const dashBoardNavigateHandler = () => {
 
     };
 
     return (
-        <div className="min-h-[calc(100vh-64px)] bg-[#0a0a0a] text-gray-300 px-4 sm:px-8 lg:px-14">
+        <div className="min-h-[calc(100vh-64px)] bg-gradient-to-br from-[#f0f2f5] via-[#ffffff] to-[#f0f2f5] text-gray-800 px-4 sm:px-8 lg:px-14">
             {/* Hero Section */}
             <div className="flex flex-col lg:flex-row items-center justify-between pt-16 lg:pt-20 gap-10">
                 {/* Left Side Text */}
@@ -25,10 +25,10 @@ const LandingPage = () => {
                         }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.8 }}
-                        className="text-white font-bold text-3xl sm:text-4xl md:text-5xl leading-tight md:leading-[55px] mb-4">
+                        className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight md:leading-[55px] mb-4 text-gray-900">
                         {desc}
                     </motion.h1>
-                    <p className="text-gray-400 text-sm mb-6 max-w-xl">
+                    <p className="text-gray-600 text-sm mb-6 max-w-xl">
                         LinkNShare simplifies URL shortening for efficient sharing.
                         Easily generate, manage, and track your shortened links.
                     </p>
@@ -54,11 +54,10 @@ const LandingPage = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                             onClick={dashBoardNavigateHandler}
-                            className="border border-gray-500 text-gray-300 py-2 px-6 rounded-md hover:border-white hover:text-white transition duration-300">
+                            className="border border-gray-400 text-gray-700 py-2 px-6 rounded-md hover:border-gray-600 hover:text-gray-900 transition duration-300">
                             Create Short Link
                         </motion.button>
                     </div>
-
                 </div>
 
                 {/* Right Side Image */}
@@ -72,7 +71,7 @@ const LandingPage = () => {
                         transition={{ duration: 0.8 }}
                         src="/image/img2.png"
                         alt="linkImage"
-                        className="w-full max-w-sm sm:max-w-md object-cover rounded-md border border-gray-700 shadow-md"
+                        className="w-full max-w-sm sm:max-w-md object-cover rounded-md border border-gray-300 shadow-md"
                     />
                 </div>
             </div>
@@ -87,7 +86,7 @@ const LandingPage = () => {
                     }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.8 }}
-                    className="text-white text-2xl sm:text-3xl font-bold text-center mb-10 max-w-3xl mx-auto">
+                    className="text-gray-900 text-2xl sm:text-3xl font-bold text-center mb-10 max-w-3xl mx-auto">
                     Trusted by individuals and teams at the world's best companies
                 </motion.p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">

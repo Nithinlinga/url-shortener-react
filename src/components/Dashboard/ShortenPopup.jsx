@@ -8,6 +8,7 @@ import CreateNewShorten from './CreateNewShorten';
 const ShortenPopUp = ({ open, setOpen, refetch}) => {
 
     const handleClose = () => {
+        refetch();
         setOpen(false);
     };
 

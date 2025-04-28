@@ -8,8 +8,9 @@ import { useStoreContext } from '../contextapi/ContextApi';
 
 const Login = () => {
   const [loader, setLoader] = useState(false);
-    const navigate=useNavigate();
-    const {setToken}=useStoreContext();
+  const navigate = useNavigate();
+  const { setToken } = useStoreContext();
+
   const {
     register,
     handleSubmit,
@@ -26,41 +27,34 @@ const Login = () => {
   const loginHandler = async (data) => {
     setLoader(true);
     try {
-        const {data:response}=await Api.post('/api/auth/public/login', data);
-        toast.success('Login successful!');
-        reset();
-        // Store the token in local storage or context
-        setToken(response.token);
-        // Optionally, you can also store it in localStorage
-        localStorage.setItem('JWT_TOKEN', JSON.stringify(response.token));
-        console.log('Login successful!',response.token);
-        navigate('/dashboard');
+      const { data: response } = await Api.post('/api/auth/public/login', data);
+      toast.success('Login successful!');
+      reset();
+      setToken(response.token);
+      localStorage.setItem('JWT_TOKEN', JSON.stringify(response.token));
+      navigate('/dashboard');
     } catch (error) {
       console.error(error.message);
       if (error.response && error.response.status === 400) {
-        toast.error('Username or email already exists!');
+        toast.error('Username or password is incorrect!');
       } else if (error.response && error.response.status === 500) {
         toast.error('Server error! Please try again later.');
       } else {
         toast.error('An unexpected error occurred!');
       }
-        
+    } finally {
+      setLoader(false);
     }
-    finally{
-        setLoader(false);
-    }
-
   };
 
   return (
-    <div className="min-h-[calc(100vh-64px)] flex justify-center items-center bg-gradient-to-br from-[#0f0f0f] via-[#1a1a1a] to-[#111] px-4 py-10">
-
+    <div className="min-h-[calc(100vh-64px)] flex justify-center items-center bg-gradient-to-br from-pink-200 via-purple-200 to-indigo-100 px-4 py-10">
       <form
         onSubmit={handleSubmit(loginHandler)}
-        className="w-full max-w-md bg-[#121212] shadow-lg rounded-2xl p-8 sm:p-10 transition-all duration-300 border border-neutral-800"
->
-        <h1 className="text-center text-3xl font-bold font-serif  text-neutral-300 mb-6 tracking-tight">
-          Login Here
+        className="w-full max-w-md bg-white shadow-2xl rounded-3xl p-8 sm:p-10 transition-all duration-300 border border-gray-200"
+      >
+        <h1 className="text-center text-3xl font-extrabold text-indigo-600 mb-6 tracking-tight">
+          Welcome Back 👋
         </h1>
 
         <div className="flex flex-col gap-5">
@@ -69,7 +63,7 @@ const Login = () => {
             required
             id="username"
             type="text"
-            message="*username is required"
+            message="*Username is required"
             register={register}
             placeholder="Enter your username"
             errors={errors}
@@ -91,20 +85,20 @@ const Login = () => {
         <button
           type="submit"
           disabled={loader}
-          className={`mt-6 w-full py-2.5 rounded-md text-white font-medium transition-all duration-200 ${
+          className={`mt-6 w-full py-3 rounded-lg cursor-pointer text-white font-bold text-lg transition-all duration-200 ${
             loader
-              ? 'bg-gray-400 cursor-not-allowed'
-              : 'bg-black hover:bg-gray-900'
+              ? 'bg-indigo-300 cursor-not-allowed'
+              : 'bg-indigo-500 hover:bg-indigo-600'
           }`}
         >
-          {loader ? 'Loging In...' : 'Login'}
+          {loader ? 'Logging In...' : 'Login'}
         </button>
 
         <p className="text-center text-sm text-gray-600 mt-6">
-          Don't have an account?{" "}
+          Don't have an account?{' '}
           <Link
             to="/register"
-            className="text-white font-semibold hover:underline"
+            className="text-indigo-600 font-semibold hover:underline"
           >
             Register
           </Link>
