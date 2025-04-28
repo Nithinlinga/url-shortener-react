@@ -5,7 +5,7 @@ import Modal from '@mui/material/Modal';
 import React from 'react'
 import CreateNewShorten from './CreateNewShorten';
 
-const ShortenPopUp = ({ open, setOpen, refetch}) => {
+const ShortenLinkPopup = ({ open, setOpen, refetch}) => {
 
     const handleClose = () => {
         refetch();
@@ -34,4 +34,4 @@ const ShortenPopUp = ({ open, setOpen, refetch}) => {
   )
 }
 
-export default ShortenPopUp;
+export default ShortenLinkPopup;

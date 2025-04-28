@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import Graph from './Graph'
 import { useFetchMyShortUrls, useFetchTotalClicks } from '../../hooks/useQuery'
-import ShortenPopUp from './ShortenPopUp'
 import { FaLink } from 'react-icons/fa'
 import ShortenUrlList from './ShortenUrlList'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../Loader'
 import { useStoreContext } from '../../contextapi/ContextApi'
+import ShortenLinkPopup from './ShortenLinkPopup'
 
 const DashboardLayout = () => {
     // const refetch = false;
@@ -69,7 +69,7 @@ const DashboardLayout = () => {
         </div>
         )}
 
-        <ShortenPopUp
+        <ShortenLinkPopup
           refetch={refetch}
           open={shortenPopUp}
           setOpen={setShortenPopUp}
