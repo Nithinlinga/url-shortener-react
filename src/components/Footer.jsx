@@ -3,12 +3,12 @@ import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0a0a0a] text-gray-400 py-10 px-6 lg:px-16 border-t border-gray-800">
+    <footer className="bg-gradient-to-br from-[#f0f2f5] via-[#ffffff] to-[#f0f2f5] text-gray-700 py-10 px-6 lg:px-16 border-t border-gray-300">
       <div className="max-w-7xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-6">
         {/* Branding */}
         <div className="text-center lg:text-left">
-          <h2 className="text-white text-2xl font-bold">LinkNShare</h2>
-          <p className="text-sm mt-1">Simplifying URL shortening for efficient sharing.</p>
+          <h2 className="text-gray-900 text-2xl font-bold">LinkNShare</h2>
+          <p className="text-sm mt-1 text-gray-600">Simplifying URL shortening for efficient sharing.</p>
         </div>
 
         {/* Copyright */}
@@ -18,16 +18,16 @@ const Footer = () => {
 
         {/* Social Icons */}
         <div className="flex space-x-5">
-          <a href="#" className="hover:text-white transition duration-300">
+          <a href="#" className="hover:text-indigo-600 transition duration-300">
             <FaFacebook size={20} />
           </a>
-          <a href="#" className="hover:text-white transition duration-300">
+          <a href="#" className="hover:text-blue-400 transition duration-300">
             <FaTwitter size={20} />
           </a>
-          <a href="#" className="hover:text-white transition duration-300">
+          <a href="#" className="hover:text-pink-500 transition duration-300">
             <FaInstagram size={20} />
           </a>
-          <a href="#" className="hover:text-white transition duration-300">
+          <a href="#" className="hover:text-blue-700 transition duration-300">
             <FaLinkedin size={20} />
           </a>
         </div>

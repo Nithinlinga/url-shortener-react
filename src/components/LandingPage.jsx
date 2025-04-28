@@ -8,7 +8,11 @@ const LandingPage = () => {
     const { token, setToken } = useStoreContext();
     const desc = "Generate short, memorable links with ease using LinkNShare";
     const dashBoardNavigateHandler = () => {
-
+        if (token) {
+            window.location.href = "/dashboard";
+        } else {
+            window.location.href = "/login";
+        }
     };
 
     return (
@@ -42,7 +46,7 @@ const LandingPage = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                             onClick={dashBoardNavigateHandler}
-                            className="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-2 px-6 rounded-md hover:opacity-90 transition duration-300">
+                            className="bg-gradient-to-r cursor-pointer from-indigo-500 to-purple-600 text-white py-2 px-6 rounded-md hover:opacity-90 transition duration-300">
                             Manage Links
                         </motion.button>
                         <motion.button
@@ -54,7 +58,7 @@ const LandingPage = () => {
                             viewport={{ once: true }}
                             transition={{ duration: 0.8 }}
                             onClick={dashBoardNavigateHandler}
-                            className="border border-gray-400 text-gray-700 py-2 px-6 rounded-md hover:border-gray-600 hover:text-gray-900 transition duration-300">
+                            className="border border-gray-400 cursor-pointer text-gray-700 py-2 px-6 rounded-md hover:border-gray-600 hover:text-gray-900 transition duration-300">
                             Create Short Link
                         </motion.button>
                     </div>
