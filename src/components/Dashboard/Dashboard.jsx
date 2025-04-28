@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Graph from './Graph'
 import { useFetchMyShortUrls, useFetchTotalClicks } from '../../hooks/useQuery'
+import ShortenPopUp from './ShortenPopUp'
 import { FaLink } from 'react-icons/fa'
 import ShortenUrlList from './ShortenUrlList'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../Loader'
-import ShortenPopUp from './ShortenPopup'
 import { useStoreContext } from '../../contextapi/ContextApi'
 
 const DashboardLayout = () => {
@@ -46,7 +46,7 @@ const DashboardLayout = () => {
             </div>
             <div className='py-5 sm:text-end text-center'>
                 <button
-                    className='bg-custom-gradient px-4 py-2 rounded-md text-white'
+                    className='bg-red-700 cursor-pointer px-4 py-2 rounded-md text-white'
                     onClick={() => setShortenPopUp(true)}>
                     Create a New Short URL
                 </button>

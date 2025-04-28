@@ -1,11 +1,19 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { RxCross2 } from 'react-icons/rx';
 import { IoIosMenu } from 'react-icons/io';
+import { useStoreContext } from '../contextapi/ContextApi';
 
 const NavBar = () => {
+  const navigate=useNavigate();
+  const {token,setToken}=useStoreContext();
   const [navbarOpen, setNavbarOpen] = useState(false);
   const { pathname } = useLocation();
+  function onLogoutHandler() {
+    setToken(null);
+    localStorage.removeItem('JWT_TOKEN');
+    navigate('/login');
+  }
 
   return (
     <nav className="h-16 bg-[#0a0a0a] shadow-sm text-white sticky top-0 z-50">
@@ -42,6 +50,18 @@ const NavBar = () => {
               About
             </Link>
           </li>
+          {token && ( <li className="sm:ml-6 mb-2 sm:mb-0">
+            <Link
+              to="/dashboard"
+              className={`block text-sm font-medium transition duration-200 ${
+                pathname === '/about' ? 'text-white font-semibold' : 'text-gray-400 hover:text-white'
+              }`}
+              onClick={() => setNavbarOpen(false)}
+            >
+              Dashboard
+            </Link>
+          </li>)}
+          {!token && (
           <li className="sm:ml-6 mb-2 sm:mb-0">
             <Link
               to="/register"
@@ -51,6 +71,17 @@ const NavBar = () => {
               Signup
             </Link>
           </li>
+          )} 
+          {token && (
+          <li className="sm:ml-6 mb-2 sm:mb-0">
+            <button
+            className="block text-sm font-medium bg-rose-700 text-white rounded px-3 py-1.5 hover:bg-rose-600 transition duration-200"
+            onClick={onLogoutHandler}
+            >
+              Logout
+            </button>
+          </li>
+          )} 
         </ul>
 
         {/* Mobile Toggle Button */}

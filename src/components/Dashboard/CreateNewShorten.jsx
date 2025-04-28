@@ -6,7 +6,7 @@ import { Tooltip } from '@mui/material';
 import { RxCross2 } from 'react-icons/rx';
 import toast from 'react-hot-toast';
 import { useStoreContext } from '../../contextapi/ContextApi';
-import api from '../../api/api';
+import api from '../../api/NewAPI';
 
 const CreateNewShorten = ({ setOpen, refetch }) => {
     const { token } = useStoreContext();
@@ -93,7 +93,7 @@ const CreateNewShorten = ({ setOpen, refetch }) => {
             <button
               disabled={loading}
               onClick={() => setOpen(false)}
-              className=" absolute right-2 top-2  "
+              className=" absolute right-2 top-2 cursor-pointer "
             >
               <RxCross2 className="text-slate-800   text-3xl" />
             </button>

@@ -5,11 +5,12 @@ import { FaExternalLinkAlt, FaRegCalendarAlt } from 'react-icons/fa';
 import { IoCopy } from 'react-icons/io5';
 import { LiaCheckSolid } from 'react-icons/lia';
 import { MdAnalytics, MdOutlineAdsClick } from 'react-icons/md';
+import api from '../../api/NewAPI';
 import { Link, useNavigate } from 'react-router-dom';
 import { Hourglass } from 'react-loader-spinner';
 import Graph from './Graph';
 import { useStoreContext } from '../../contextapi/ContextApi';
-import api from '../../api/api';
+import toast from 'react-hot-toast';
 
 const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
     const { token } = useStoreContext();
@@ -19,6 +20,17 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
     const [loader, setLoader] = useState(false);
     const [selectedUrl, setSelectedUrl] = useState("");
     const [analyticsData, setAnalyticsData] = useState([]);
+
+    const handleCopy = () => {
+        setIsCopied(true);
+        toast.success('Link copied to clipboard!', {
+            duration: 2000,
+            position: 'top-center',
+        });
+        setTimeout(() => setIsCopied(false), 2000); // Reset "Copied" after 2s
+    };
+
+    const fullUrl = `${import.meta.env.VITE_REACT_FRONT_END_URL}/s/${shortUrl}`;
 
     const subDomain = import.meta.env.VITE_REACT_FRONT_END_URL.replace(
         /^https?:\/\//,
@@ -75,8 +87,8 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
             <Link
               target='_'
               className='text-[17px]  font-montserrat font-[600] text-linkColor'
-              to={import.meta.env.VITE_REACT_FRONT_END_URL+'/s'+ `/${shortUrl}`}>
-                  {subDomain + `/${shortUrl}`}
+              to={import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${shortUrl}`}>
+                  {subDomain + "/s/" + `${shortUrl}`}
             </Link>
             <FaExternalLinkAlt className="text-linkColor" />
             </div>
@@ -110,19 +122,16 @@ const ShortenItem = ({ originalUrl, shortUrl, clickCount, createdDate }) => {
         </div>
 
         <div className="flex  flex-1  sm:justify-end items-center gap-4">
-            <CopyToClipboard
-                onCopy={() => setIsCopied(true)}
-                text={`${import.meta.env.VITE_REACT_FRONT_END_URL + "/s/" + `${shortUrl}`}`}
-            >
-                <div className="flex cursor-pointer gap-1 items-center bg-btnColor py-2  font-semibold shadow-md shadow-slate-500 px-6 rounded-md text-white ">
-                <button className="">{isCopied ? "Copied" : "Copy"}</button>
+        <CopyToClipboard text={fullUrl} onCopy={handleCopy}>
+            <button className="flex items-center gap-2 bg-green-400 hover:bg-green-600 active:scale-95 transition-all duration-200 py-2 px-6 rounded-md text-white font-semibold shadow-md shadow-slate-500 cursor-pointer">
+                {isCopied ? "Copied!" : "Copy Link"}
                 {isCopied ? (
-                    <LiaCheckSolid className="text-md" />
+                    <LiaCheckSolid className="text-lg" />
                 ) : (
-                    <IoCopy className="text-md" />
+                    <IoCopy className="text-lg" />
                 )}
-                </div>
-            </CopyToClipboard>
+            </button>
+        </CopyToClipboard>
 
             <div
                 onClick={() => analyticsHandler(shortUrl)}

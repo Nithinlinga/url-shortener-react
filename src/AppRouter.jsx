@@ -8,10 +8,11 @@ import AboutPage from './components/About';
 import DashboardLayout from './components/Dashboard/Dashboard';
 import ShortenUrlPage from './components/ShortenUrlPage';
 import PrivateRoute from './PrivateRouter';
+import ErrorPage from './components/ErrorPage';
 const AppRouter = () => {
   return (
     <>
-      <Toaster position='bottom-center' />
+      <Toaster position='top-center' />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
@@ -19,6 +20,7 @@ const AppRouter = () => {
         <Route path="/login" element={<PrivateRoute publicPage={true}><Login /></PrivateRoute>} />
         <Route path="/dashboard" element={<PrivateRoute publicPage={false}><DashboardLayout /></PrivateRoute>} />
         <Route path="/s/:url" element={<ShortenUrlPage />} />
+        <Route path="*" element={<ErrorPage/>} />
       </Routes>
     </>
   )
