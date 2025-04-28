@@ -16,7 +16,7 @@ const NavBar = () => {
 
         {/* Nav Links */}
         <ul
-          className={`sm:flex sm:flex-row flex-col sm:static absolute left-0 top-16 bg-[#0a0a0a] w-full sm:w-auto sm:bg-transparent transition-all duration-200 ease-in-out overflow-hidden sm:overflow-visible ${
+          className={`sm:flex sm:items-center sm:flex-row flex-col sm:static absolute left-0 top-16 bg-[#0a0a0a] w-full sm:w-auto sm:bg-transparent transition-all duration-200 ease-in-out overflow-hidden sm:overflow-visible ${
             navbarOpen ? 'max-h-60 py-4 px-6' : 'max-h-0'
           } sm:max-h-full`}
         >
@@ -31,7 +31,7 @@ const NavBar = () => {
               Home
             </Link>
           </li>
-          <li className="sm:ml-6">
+          <li className="sm:ml-6 mb-2 sm:mb-0">
             <Link
               to="/about"
               className={`block text-sm font-medium transition duration-200 ${
@@ -40,6 +40,15 @@ const NavBar = () => {
               onClick={() => setNavbarOpen(false)}
             >
               About
+            </Link>
+          </li>
+          <li className="sm:ml-6 mb-2 sm:mb-0">
+            <Link
+              to="/register"
+              className="block text-sm font-medium bg-rose-700 text-white rounded px-3 py-1.5 hover:bg-rose-600 transition duration-200"
+              onClick={() => setNavbarOpen(false)}
+            >
+              Signup
             </Link>
           </li>
         </ul>

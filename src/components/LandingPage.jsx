@@ -1,9 +1,11 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import Card from './Card';
-// eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion"
+import { useStoreContext } from '../contextapi/ContextApi';
 
 const LandingPage = () => {
+    const {token,setToken}=useStoreContext();
     const desc = "Generate short, memorable links with ease using LinkNShare";
     const dashBoardNavigateHandler = () => {
 

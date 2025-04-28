@@ -1,18 +1,14 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
-import LandingPage from './components/LandingPage';
-import About from './components/About';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
+import AppRouter from './AppRouter';
+import { getApps } from './utils/Helper';
 function App() {
-
+const CurrentApp=getApps();
   return (
     <>
     <NavBar/>
-    <Routes>
-      <Route path="/" element={<LandingPage />} />
-      <Route path="/about" element={<About />} />
-    </Routes>
+    <CurrentApp/>
     <Footer/>
     </>
   )
