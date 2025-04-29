@@ -79,7 +79,7 @@ const NavBar = () => {
           {token && (
             <li className="sm:ml-6 mb-2 sm:mb-0">
               <button
-                className="block text-sm font-medium bg-rose-500 text-white rounded px-3 py-1.5 hover:bg-rose-600 transition duration-200"
+                className="block text-sm font-medium cursor-pointer bg-rose-500 text-white rounded px-3 py-1.5 hover:bg-rose-600 transition duration-200"
                 onClick={onLogoutHandler}
               >
                 Logout
